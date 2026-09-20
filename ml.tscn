@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bah8872xkqmgt"]
+
+[ext_resource type="PackedScene" uid="uid://btvjd7hhxl8u4" path="res://Door.gltf" id="1_u828q"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_nldki"]
+left_to_right = 0.0
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2rnn7"]
+size = Vector3(1, 6, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u828q"]
+size = Vector3(5, 1, 5)
+
+[node name="MeshLib" type="Node3D" unique_id=1454994107]
+
+[node name="Ramp" type="MeshInstance3D" parent="." unique_id=1808258559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 0)
+mesh = SubResource("PrismMesh_nldki")
+
+[node name="Wall" type="MeshInstance3D" parent="." unique_id=26975019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0)
+mesh = SubResource("BoxMesh_2rnn7")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=205248503]
+mesh = SubResource("BoxMesh_u828q")
+
+[node name="Door" parent="." unique_id=749681819 instance=ExtResource("1_u828q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)

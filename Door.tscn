@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bitrpm08ovg4a"]
+
+[node name="Door" type="CSGCombiner3D" unique_id=962610908]
+operation = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1883018495]
+size = Vector3(1, 6, 5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=1557335230]
+operation = 2
+size = Vector3(1, 4, 3)
