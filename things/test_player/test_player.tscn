@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cq5078y1fotr5"]
+
+[ext_resource type="Script" uid="uid://d3c74w4sxftj0" path="res://things/test_player/player.gd" id="1_6t4t2"]
+[ext_resource type="Shader" uid="uid://d15ubsbbaq8ai" path="res://things/test_player/test_player.gdshader" id="2_l60rp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfv1e"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ridcp"]
+material = SubResource("StandardMaterial3D_sfv1e")
+flip_faces = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_symyc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_erqj4"]
+render_priority = 0
+shader = ExtResource("2_l60rp")
+shader_parameter/zNear = 0.05
+shader_parameter/zFar = 100.0
+shader_parameter/outlineThickness = 1.5
+shader_parameter/outlineColor = Color(0, 0, 0, 1)
+shader_parameter/wiggleFrequency = 0.08
+shader_parameter/wiggleAmplitude = 2.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_erqj4"]
+size = Vector2(2, 2)
+
+[node name="TestPlayer" type="CharacterBody3D" unique_id=1496570716]
+script = ExtResource("1_6t4t2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=115869524]
+mesh = SubResource("BoxMesh_ridcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=947194937]
+shape = SubResource("BoxShape3D_symyc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1116540755]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=586453645]
+transform = Transform3D(1, 1.6276264e-17, 4.3612093e-18, -1.1915051e-17, 0.5000001, 0.8660254, 1.1915052e-17, -0.8660254, 0.5000001, -7.0717265e-15, 5.4119997, 3)
+fov = 100.0
+
+[node name="MoebiusShader" type="MeshInstance3D" parent="Camera3D" unique_id=538049222]
+transform = Transform3D(1, 4.9630837e-24, 8.271806e-25, -8.271806e-25, 1, 2.9802322e-08, -4.135903e-25, -2.9802322e-08, 1, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_erqj4")
+cast_shadow = 0
+extra_cull_margin = 3.0
+mesh = SubResource("QuadMesh_erqj4")
+
+[node name="Head" type="Node3D" parent="." unique_id=829207943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3802421, 0)
+
+[node name="Camera3D" type="Node3D" parent="Head" unique_id=2111582140]
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=759521462]
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(1, 1, 1, 1)
