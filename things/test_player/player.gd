@@ -17,6 +17,7 @@ var powers_to_string = { 1: "pull", 2: "push" }
 var powers = { 1: self.pull, 2: self.push }
 var current_power = 0
 
+signal use_power
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -55,8 +56,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	# move_and_collide(direction * delta)
-	if Input.is_action_just_pressed("power") and current_power in powers:
-		powers[current_power].call()
+	# if Input.is_action_just_pressed("power") and current_power in powers:
+	# 	powers[current_power].call()
+
+	if Input.is_action_just_pressed("power"):
+		create_duplicate()
 
 
 func get_light_power_source(power: int) -> void:
@@ -97,3 +101,8 @@ func pull():
 		var obj = collider as RigidBody3D
 		var backward = global_transform.basis.z
 		obj.apply_central_impulse(backward * PUSH_MAGNITUDE)
+
+func create_duplicate():
+	# should emit a signal to create another player at a certain position
+	use_power.emit()
+	# main scene should instantiate the copy
