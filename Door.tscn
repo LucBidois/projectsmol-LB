@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bitrpm08ovg4a"]
+[gd_scene format=3 uid="uid://d4era15wvq3wd"]
 
 [node name="Door" type="CSGCombiner3D" unique_id=962610908]
 operation = 2

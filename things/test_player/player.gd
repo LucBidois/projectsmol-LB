@@ -17,9 +17,14 @@ var powers_to_string = { 1: "pull", 2: "push" }
 var powers = { 1: self.pull, 2: self.push }
 var current_power = 0
 
+var is_controlled = true
+
 signal use_power
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not is_controlled:
+		return
+
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
@@ -35,9 +40,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	move_and_slide()
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+
+	if not is_controlled:
+		return
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
@@ -54,10 +64,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	move_and_slide()
-	# move_and_collide(direction * delta)
-	# if Input.is_action_just_pressed("power") and current_power in powers:
-	# 	powers[current_power].call()
 
 	if Input.is_action_just_pressed("power"):
 		create_duplicate()
