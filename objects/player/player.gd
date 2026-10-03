@@ -9,7 +9,8 @@ const PUSH_MAGNITUDE = 5
 @export var rotation_speed = 0.1
 @onready var head := $Head
 @onready var camera := $Head/Camera3D
-@onready var ray: RayCast3D = $RayCast3D
+@onready var front_ray: RayCast3D = $FrontRay
+@onready var bottom_ray: RayCast3D = $BottomRay
 
 @export var test_object: RigidBody3D
 
@@ -67,6 +68,11 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("power"):
 		create_duplicate()
+	
+	if bottom_ray.is_colliding():
+		# To find the button, will need to be done in the gridmap's script
+		print(bottom_ray.get_collider())
+		print("hit button")
 
 
 func get_light_power_source(power: int) -> void:
@@ -82,10 +88,10 @@ func remove_light_power_source(power: int) -> void:
 # emit force in front of player object
 # any objects caught in the collision area should be pushed backwards
 func push():
-	if not ray.is_colliding():
+	if not front_ray.is_colliding():
 		return
 
-	var collider = ray.get_collider()
+	var collider = front_ray.get_collider()
 	print("applying push to %s" % collider.to_string())
 
 	if collider is RigidBody3D:
@@ -97,10 +103,10 @@ func push():
 func pull():
 	# pulls objects in front of player object towards the player
 	# any objects caught in the collision area should be moved towards the player object
-	if not ray.is_colliding():
+	if not front_ray.is_colliding():
 		return
 
-	var collider = ray.get_collider()
+	var collider = front_ray.get_collider()
 	print("applying pull to %s" % collider.to_string())
 
 	if collider is RigidBody3D:

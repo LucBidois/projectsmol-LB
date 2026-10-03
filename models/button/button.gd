@@ -1,1 +1,2 @@
+class_name Button3D
 extends MeshInstance3D

@@ -2,7 +2,7 @@ extends Node3D
 
 # connect to the player signal
 
-@onready var player = $TestPlayer
+@onready var player = $Player
 
 @export var player_scene: PackedScene
 

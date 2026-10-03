@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://bah8872xkqmgt"]
 
-[ext_resource type="Script" uid="uid://d1oh81qs5guoj" path="res://models/button/button.gd" id="1_bch8k"]
 [ext_resource type="PackedScene" uid="uid://c3pwcj1my7kcc" path="res://models/door/Door.gltf" id="1_u828q"]
 [ext_resource type="PackedScene" uid="uid://bo18yx10e7i5l" path="res://models/gate/Gate.gltf" id="2_l17kt"]
 
@@ -70,7 +69,6 @@ shape = SubResource("ConvexPolygonShape3D_l17kt")
 [node name="Button" type="MeshInstance3D" parent="." unique_id=1883824033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
 mesh = SubResource("BoxMesh_l17kt")
-script = ExtResource("1_bch8k")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Button" unique_id=383849555]
 
