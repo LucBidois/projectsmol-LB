@@ -1,13 +1,7 @@
 [gd_scene format=3 uid="uid://cq5078y1fotr5"]
 
-[ext_resource type="Script" uid="uid://d3c74w4sxftj0" path="res://things/test_player/player.gd" id="1_6t4t2"]
-[ext_resource type="Shader" uid="uid://dv76su8ee4wgd" path="res://shaders/first.gdshader" id="2_erqj4"]
+[ext_resource type="Script" uid="uid://d3c74w4sxftj0" path="res://objects/test_player/player.gd" id="1_6t4t2"]
 [ext_resource type="Shader" uid="uid://bjrds8g1pr6d0" path="res://shaders/sennaar.gdshader" id="3_erqj4"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l60rp"]
-render_priority = 0
-shader = ExtResource("2_erqj4")
-shader_parameter/test = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfv1e"]
 albedo_color = Color(0, 1, 1, 1)
@@ -40,7 +34,6 @@ size = Vector2(2, 2)
 script = ExtResource("1_6t4t2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=115869524]
-material_override = SubResource("ShaderMaterial_l60rp")
 mesh = SubResource("BoxMesh_ridcp")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=947194937]
