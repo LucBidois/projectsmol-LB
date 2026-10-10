@@ -13,3 +13,7 @@ func _open() -> void:
 
 func _close() -> void:
 	animation_player.play_backwards("open")
+
+
+func _on_button_deactivate() -> void:
+	_close()

@@ -36,7 +36,7 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 
 
 func engage_button() -> void:
-	print("engaged")
+	# print("engaged")
 	var tween = create_tween()
 	tween.tween_property(animatable_body_3d, "position:y", initial_y - depression_depth, ANIMATION_DURATION) \
 			.set_trans(Tween.TRANS_SPRING) \
@@ -44,7 +44,7 @@ func engage_button() -> void:
 
 
 func disengage_button() -> void:
-	print("disengaged")
+	# print("disengaged")
 	var tween = create_tween()
 	tween.tween_property(animatable_body_3d, "position:y", initial_y, ANIMATION_DURATION) \
 			.set_trans(Tween.TRANS_SPRING) \
