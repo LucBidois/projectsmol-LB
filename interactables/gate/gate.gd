@@ -3,11 +3,6 @@ extends Node3D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func _ready() -> void:
-	animation_player.seek(0, true)
-	animation_player.stop()
-
-
 func _on_button_activate() -> void:
 	_open()
 
