@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bo18yx10e7i5l"
-path="res://.godot/imported/gate.gltf-1ed94c6bf63a5db3aedf6313fe7c5ed7.scn"
+uid="uid://c3pwcj1my7kcc"
+path="res://.godot/imported/door.gltf-566909e3390a2afd6cb3e9feb828b168.scn"
 
 [deps]
 
-source_file="res://models/gate/gate.gltf"
-dest_files=["res://.godot/imported/gate.gltf-1ed94c6bf63a5db3aedf6313fe7c5ed7.scn"]
+source_file="res://interactables/door/door.gltf"
+dest_files=["res://.godot/imported/door.gltf-566909e3390a2afd6cb3e9feb828b168.scn"]
 
 [params]
 

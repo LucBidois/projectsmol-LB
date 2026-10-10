@@ -68,11 +68,13 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("power"):
 		create_duplicate()
-	
-	if bottom_ray.is_colliding():
-		# To find the button, will need to be done in the gridmap's script
-		print(bottom_ray.get_collider())
-		print("hit button")
+
+	# abandon this approach, change smart objects e.g. gate, button to separate
+	# manually placed nodes
+	# if bottom_ray.is_colliding():
+	# 	# To find the button, will need to be done in the gridmap's script
+	# 	print(bottom_ray.get_collider())
+	# 	print("hit button")
 
 
 func get_light_power_source(power: int) -> void:

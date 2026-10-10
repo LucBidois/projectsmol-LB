@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bt5i1fbsle6c"]
+
+[ext_resource type="Script" uid="uid://c5b462dj3ev1i" path="res://interactables/button/button.gd" id="1_oqdat"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2324a"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ridcp"]
+material = SubResource("StandardMaterial3D_2324a")
+size = Vector3(3, 0.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2324a"]
+size = Vector3(3, 0.5, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oqdat"]
+size = Vector3(2.9, 0.1, 2.9)
+
+[node name="Button" type="AnimatableBody3D" unique_id=1355498981]
+script = ExtResource("1_oqdat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=993330712]
+mesh = SubResource("BoxMesh_ridcp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=978661370]
+shape = SubResource("BoxShape3D_2324a")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1765742658]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1750792527]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30057418, 0)
+shape = SubResource("BoxShape3D_oqdat")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
