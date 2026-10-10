@@ -15,13 +15,15 @@ size = Vector3(3, 0.5, 3)
 [sub_resource type="BoxShape3D" id="BoxShape3D_oqdat"]
 size = Vector3(2.9, 0.1, 2.9)
 
-[node name="Button" type="AnimatableBody3D" unique_id=1355498981]
+[node name="Button" type="Node3D" unique_id=782463362]
 script = ExtResource("1_oqdat")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=993330712]
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="." unique_id=731788528]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D" unique_id=993330712]
 mesh = SubResource("BoxMesh_ridcp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=978661370]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D" unique_id=978661370]
 shape = SubResource("BoxShape3D_2324a")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1765742658]
@@ -30,4 +32,7 @@ shape = SubResource("BoxShape3D_2324a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30057418, 0)
 shape = SubResource("BoxShape3D_oqdat")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=631116437]
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
