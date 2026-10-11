@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bx4aau0bj0hf1"]
+
+[ext_resource type="Script" uid="uid://xyxlw10njfq8" path="res://objects/player/iso_camera.gd" id="1_aglg1"]
+[ext_resource type="Shader" uid="uid://bjrds8g1pr6d0" path="res://shaders/sennaar.gdshader" id="1_vno0a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_erqj4"]
+render_priority = 0
+shader = ExtResource("1_vno0a")
+shader_parameter/edge_colour = Color(0, 0, 0, 1)
+shader_parameter/edge_width = 2.0
+shader_parameter/depth_edge_threshold = 0.86
+shader_parameter/max_dist = 171.0
+shader_parameter/colour_pallet = PackedColorArray(0.77036744, 0.06388052, 0.057408012, 0, 0.9061115, 0.44678128, 0.123003, 0, 0.42022645, 0.1788803, 0, 0, 0.59607846, 0.007843138, 0, 0, 0.63529414, 0.21568628, 0, 0)
+shader_parameter/use_converted_pallet = false
+shader_parameter/converted_pallet = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/shadow_edge_width = 4.0
+shader_parameter/miniumum_darkness = 2.352
+
+[sub_resource type="QuadMesh" id="QuadMesh_erqj4"]
+size = Vector2(2, 2)
+
+[node name="IsoCamera" type="Node3D" unique_id=2075513494]
+transform = Transform3D(0.81613755, -0.3339194, 0.47161126, 0, 0.8161375, 0.57785755, -0.57785755, -0.47161126, 0.66608053, 0, 0, 0)
+script = ExtResource("1_aglg1")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=120742850]
+projection = 1
+size = 25.0
+
+[node name="MoebiusShader" type="MeshInstance3D" parent="Camera3D" unique_id=629826326]
+transform = Transform3D(0.70710677, 0.6123724, -0.35355347, -0.5, 0.7865662, 0.3623724, 0.5, -0.07945919, 0.8623725, -0.3535533, 2.5413277, -1.958672)
+visible = false
+material_override = SubResource("ShaderMaterial_erqj4")
+mesh = SubResource("QuadMesh_erqj4")

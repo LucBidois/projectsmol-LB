@@ -7,42 +7,26 @@ const PUSH_MAGNITUDE = 5
 @export var speed = 5.0
 @export var jump_velocity = 4.5
 @export var rotation_speed = 0.1
-@onready var head := $Head
-@onready var camera := $Head/Camera3D
-@onready var front_ray: RayCast3D = $FrontRay
-@onready var bottom_ray: RayCast3D = $BottomRay
-
-@export var test_object: RigidBody3D
 
 var powers_to_string = { 1: "pull", 2: "push" }
-var powers = { 1: self.pull, 2: self.push }
+# var powers = { 1: self.pull, 2: self.push }
 var current_power = 0
 
 var is_controlled = true
 
 signal use_power
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not is_controlled:
-		return
+# func _unhandled_input(event: InputEvent) -> void:
+# 	if not is_controlled:
+# 		return
 
-	if event is InputEventMouseButton:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	elif event.is_action_pressed("ui_cancel"):
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * rotation_speed))
-		head.rotate_x(deg_to_rad(-event.relative.y * rotation_speed))
-		head.rotation_degrees.x = clamp(
-			head.rotation_degrees.x,
-			-MAX_ROTATION_ANGLE,
-			MAX_ROTATION_ANGLE,
-		)
+# 	if event is InputEventMouseButton:
+# 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+# 	elif event.is_action_pressed("ui_cancel"):
+# 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _physics_process(delta: float) -> void:
-	move_and_slide()
-
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -65,16 +49,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
+	move_and_slide()
 
 	if Input.is_action_just_pressed("power"):
 		create_duplicate()
-
-	# abandon this approach, change smart objects e.g. gate, button to separate
-	# manually placed nodes
-	# if bottom_ray.is_colliding():
-	# 	# To find the button, will need to be done in the gridmap's script
-	# 	print(bottom_ray.get_collider())
-	# 	print("hit button")
 
 
 func get_light_power_source(power: int) -> void:
@@ -86,35 +64,34 @@ func remove_light_power_source(power: int) -> void:
 	print("Removing light power " + str(powers_to_string[power]))
 	print("current power: %d" % current_power)
 
-
 # emit force in front of player object
 # any objects caught in the collision area should be pushed backwards
-func push():
-	if not front_ray.is_colliding():
-		return
+# func push():
+# 	if not front_ray.is_colliding():
+# 		return
 
-	var collider = front_ray.get_collider()
-	print("applying push to %s" % collider.to_string())
+# 	var collider = front_ray.get_collider()
+# 	print("applying push to %s" % collider.to_string())
 
-	if collider is RigidBody3D:
-		var obj = collider as RigidBody3D
-		var forward = -global_transform.basis.z
-		obj.apply_central_impulse(forward * PUSH_MAGNITUDE)
+# 	if collider is RigidBody3D:
+# 		var obj = collider as RigidBody3D
+# 		var forward = -global_transform.basis.z
+# 		obj.apply_central_impulse(forward * PUSH_MAGNITUDE)
 
+# func pull():
+# 	# pulls objects in front of player object towards the player
+# 	# any objects caught in the collision area should be moved towards the player object
+# 	if not front_ray.is_colliding():
+# 		return
 
-func pull():
-	# pulls objects in front of player object towards the player
-	# any objects caught in the collision area should be moved towards the player object
-	if not front_ray.is_colliding():
-		return
+# 	var collider = front_ray.get_collider()
+# 	print("applying pull to %s" % collider.to_string())
 
-	var collider = front_ray.get_collider()
-	print("applying pull to %s" % collider.to_string())
+# 	if collider is RigidBody3D:
+# 		var obj = collider as RigidBody3D
+# 		var backward = global_transform.basis.z
+# 		obj.apply_central_impulse(backward * PUSH_MAGNITUDE)
 
-	if collider is RigidBody3D:
-		var obj = collider as RigidBody3D
-		var backward = global_transform.basis.z
-		obj.apply_central_impulse(backward * PUSH_MAGNITUDE)
 
 func create_duplicate():
 	# should emit a signal to create another player at a certain position
