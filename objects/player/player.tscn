@@ -41,15 +41,8 @@ shape = SubResource("BoxShape3D_symyc")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1116540755]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=586453645]
+[node name="Camera3D" type="Node3D" parent="." unique_id=1134506503]
 transform = Transform3D(1, 1.6276264e-17, 4.3612093e-18, -1.1915051e-17, 0.5000001, 0.8660254, 1.1915052e-17, -0.8660254, 0.5000001, -7.0717265e-15, 5.4119997, 3)
-fov = 100.0
-
-[node name="MoebiusShader" type="MeshInstance3D" parent="Camera3D" unique_id=538049222]
-transform = Transform3D(1, 4.9630837e-24, 8.271806e-25, -8.271806e-25, 1, 2.9802322e-08, -4.135903e-25, -2.9802322e-08, 1, 0, 0, 0)
-visible = false
-material_override = SubResource("ShaderMaterial_erqj4")
-mesh = SubResource("QuadMesh_erqj4")
 
 [node name="Head" type="Node3D" parent="." unique_id=829207943]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3802421, 0)
@@ -63,3 +56,15 @@ debug_shape_custom_color = Color(1, 1, 1, 1)
 [node name="BottomRay" type="RayCast3D" parent="." unique_id=242491341]
 target_position = Vector3(0, -10, 0)
 debug_shape_custom_color = Color(1, 1, 1, 1)
+
+[node name="CameraPitch" type="Node3D" parent="." unique_id=1750909878]
+transform = Transform3D(0.70710677, -0.49999994, 0.49999994, 0, 0.7071067, 0.7071067, -0.70710677, -0.49999994, 0.49999994, 2.5, 5, 5)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPitch" unique_id=448491884]
+projection = 1
+size = 25.0
+
+[node name="MoebiusShader" type="MeshInstance3D" parent="CameraPitch/Camera3D" unique_id=538049222]
+transform = Transform3D(0.70710677, 0.6123724, -0.35355347, -0.5, 0.7865662, 0.3623724, 0.5, -0.07945919, 0.8623725, -0.3535533, 2.5413277, -1.958672)
+material_override = SubResource("ShaderMaterial_erqj4")
+mesh = SubResource("QuadMesh_erqj4")
