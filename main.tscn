@@ -31,8 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 1.25, -2.5)
 [node name="Gate" parent="." unique_id=1585980521 instance=ExtResource("5_lquwl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -7.5)
 
-[node name="IsoCamera" parent="." unique_id=2075513494 node_paths=PackedStringArray("player") instance=ExtResource("6_7mycd")]
-player = NodePath("../Player")
+[node name="IsoCamera" parent="." unique_id=2075513494 node_paths=PackedStringArray("target") instance=ExtResource("6_7mycd")]
+target = NodePath("../Player")
 
 [connection signal="use_power" from="Player" to="." method="_on_test_player_use_power"]
 [connection signal="activate" from="Button" to="Gate" method="_on_button_activate"]

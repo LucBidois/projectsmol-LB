@@ -20,7 +20,7 @@ shader_parameter/miniumum_darkness = 2.352
 size = Vector2(2, 2)
 
 [node name="IsoCamera" type="Node3D" unique_id=2075513494]
-transform = Transform3D(0.81613755, -0.3339194, 0.47161126, 0, 0.8161375, 0.57785755, -0.57785755, -0.47161126, 0.66608053, 0, 0, 0)
+transform = Transform3D(0.7071067, -0.40860698, 0.57709634, 0, 0.8161375, 0.57785755, -0.7071067, -0.40860698, 0.57709634, 0, 0, 0)
 script = ExtResource("1_aglg1")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=120742850]

@@ -1,19 +1,21 @@
+class_name IsoCamera
 extends Node3D
+## Isometric camera, angled at 'true' a isometric projection of ~35.26 degrees on the x axis.
+##
+## Angled at 45 degrees on the y axis.
 
-@export var player: Player
+## Target node for the isometric camera to follow
+@export var target: Player
 @export var speed_factor: float = 5
 
-@onready var camera3d: Camera3D = $Camera3D
-const OFFSET := Vector3(1, 1, 1)
+## The physical distance the camera is away from the target.
+##
+## Increase if the camera is clipping with geometry
+@export var camera_distance: float = 20
 
-# isometric angle, works out to 32 degrees
-const ANGLE := atan(1.0 / sqrt(2.0))
-
-# on ready, have the camera look at the player and be in the isometric position
-
-# in process, update the camera position to follow the player
+const OFFSET_DIR := Vector3(1, 1, 1)
 
 
 func _process(delta: float) -> void:
-	var target := player.position + OFFSET
-	position = lerp(position, target, speed_factor * delta) + OFFSET
+	var target_position := target.position + OFFSET_DIR * camera_distance
+	global_position = lerp(global_position, target_position, speed_factor * delta)
