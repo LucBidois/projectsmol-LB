@@ -1,6 +1,6 @@
 class_name IsoCamera
 extends Node3D
-## Isometric camera, angled at 'true' a isometric projection of ~35.26 degrees on the x axis.
+## Isometric camera, angled at a 'true' isometric projection of ~35.26 degrees on the x axis.
 ##
 ## Angled at 45 degrees on the y axis.
 
