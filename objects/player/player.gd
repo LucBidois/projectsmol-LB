@@ -22,8 +22,6 @@ const MINIMUM_JUMP_POWER = 1
 
 signal use_power
 
-#c9mment from my phone
-
 # func _unhandled_input(event: InputEvent) -> void:
 # 	if not is_controlled:
 # 		return
