@@ -19,3 +19,7 @@ const OFFSET_DIR := Vector3(1, 1, 1)
 func _process(delta: float) -> void:
 	var target_position := target.position + OFFSET_DIR * camera_distance
 	global_position = lerp(global_position, target_position, speed_factor * delta)
+
+
+func _on_button_pressed() -> void:
+	print("hello")

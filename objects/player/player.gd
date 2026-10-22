@@ -101,3 +101,7 @@ func _spawn_character(character):
 	# should emit a signal to create another player at a certain position
 	use_power.emit()
 	# main scene should instantiate the copy
+
+
+func _on_button_mouse_entered() -> void:
+	print("beep")

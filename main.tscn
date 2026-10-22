@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://d0j01vwnhgblg" path="res://resources/character_1.tres" id="4_272bh"]
 [ext_resource type="PackedScene" uid="uid://1iadcnrj7k2g" path="res://interactables/gate/gate.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bx4aau0bj0hf1" path="res://objects/player/iso_camera.tscn" id="6_7mycd"]
+[ext_resource type="Script" uid="uid://d1xn54q3sje18" path="res://button.gd" id="8_5vw27"]
 
 [node name="Main" type="Node3D" unique_id=410036954]
 script = ExtResource("1_h2yge")
@@ -48,8 +49,18 @@ action_right = &"right"
 action_up = &"forward"
 action_down = &"backward"
 
+[node name="Button" type="Button" parent="IsoCamera" unique_id=1040418047]
+offset_left = 108.0
+offset_top = 447.99994
+offset_right = 116.0
+offset_bottom = 455.99994
+scale = Vector2(12.254963, 11.325479)
+action_mode = 0
+script = ExtResource("8_5vw27")
+
 [connection signal="use_power" from="Player" to="." method="_on_player_use_power"]
 [connection signal="activate" from="Button" to="Gate" method="_on_button_activate"]
 [connection signal="deactivate" from="Button" to="Gate" method="_on_button_deactivate"]
+[connection signal="mouse_entered" from="IsoCamera/Button" to="Player" method="_on_button_mouse_entered"]
 
 [editable path="Player"]
