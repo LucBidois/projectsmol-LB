@@ -61,6 +61,6 @@ script = ExtResource("8_5vw27")
 [connection signal="use_power" from="Player" to="." method="_on_player_use_power"]
 [connection signal="activate" from="Button" to="Gate" method="_on_button_activate"]
 [connection signal="deactivate" from="Button" to="Gate" method="_on_button_deactivate"]
-[connection signal="mouse_entered" from="IsoCamera/Button" to="Player" method="_on_button_mouse_entered"]
+[connection signal="pressed" from="IsoCamera/Button" to="Player" method="_on_button_pressed"]
 
 [editable path="Player"]

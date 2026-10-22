@@ -103,5 +103,5 @@ func _spawn_character(character):
 	# main scene should instantiate the copy
 
 
-func _on_button_mouse_entered() -> void:
-	print("beep")
+func _on_button_pressed() -> void:
+	print("hmm")

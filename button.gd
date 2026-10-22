@@ -5,5 +5,5 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _on_toggled(toggled_on: bool) -> void:
-	print("please work")
+func _pressed() -> void:
+	print("easy")
