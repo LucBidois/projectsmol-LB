@@ -36,12 +36,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -7.5)
 
 [node name="IsoCamera" parent="." unique_id=2075513494 node_paths=PackedStringArray("target") instance=ExtResource("6_7mycd")]
 transform = Transform3D(0.7071067, -0.40860698, 0.57709634, 0, 0.8161375, 0.57785755, -0.7071067, -0.40860698, 0.57709634, 10.192003, 10.618506, 1.4505949)
-visible = false
 target = NodePath("../Player")
 
-[node name="VirtualJoystick" type="VirtualJoystick" parent="IsoCamera" unique_id=1044069878]
-offset_left = 886.0
-offset_top = 399.0
+[node name="Control" type="Control" parent="IsoCamera" unique_id=627955258]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="IsoCamera/Control" unique_id=1040418047]
+layout_mode = 0
+offset_left = 105.99999
+offset_top = 454.99997
+offset_right = 113.99999
+offset_bottom = 463.74133
+scale = Vector2(12.254963, 11.325479)
+action_mode = 0
+script = ExtResource("8_5vw27")
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="IsoCamera/Control" unique_id=1044069878]
+layout_mode = 0
+offset_left = 886.00006
+offset_top = 398.99997
 offset_right = 1044.0576
 offset_bottom = 562.13257
 action_left = &"left"
@@ -49,18 +65,9 @@ action_right = &"right"
 action_up = &"forward"
 action_down = &"backward"
 
-[node name="Button" type="Button" parent="IsoCamera" unique_id=1040418047]
-offset_left = 108.0
-offset_top = 447.99994
-offset_right = 116.0
-offset_bottom = 455.99994
-scale = Vector2(12.254963, 11.325479)
-action_mode = 0
-script = ExtResource("8_5vw27")
-
 [connection signal="use_power" from="Player" to="." method="_on_player_use_power"]
 [connection signal="activate" from="Button" to="Gate" method="_on_button_activate"]
 [connection signal="deactivate" from="Button" to="Gate" method="_on_button_deactivate"]
-[connection signal="pressed" from="IsoCamera/Button" to="Player" method="_on_button_pressed"]
+[connection signal="pressed" from="IsoCamera/Control/Button" to="Player" method="_on_button_pressed"]
 
 [editable path="Player"]

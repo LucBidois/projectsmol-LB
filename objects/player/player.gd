@@ -39,6 +39,7 @@ func _physics_process(delta: float) -> void:
 
 	if is_controlled:
 		# Handle jump.
+		
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			velocity.y = jump_velocity * max(character.jump_power, MINIMUM_JUMP_POWER)
 
@@ -97,7 +98,7 @@ func remove_light_power_source(power: int) -> void:
 # 		obj.apply_central_impulse(backward * PUSH_MAGNITUDE)
 
 
-func _spawn_character(character):
+func _spawn_character(_character):
 	# should emit a signal to create another player at a certain position
 	use_power.emit()
 	# main scene should instantiate the copy
