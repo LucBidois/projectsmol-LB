@@ -44,12 +44,22 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="IsoCamera/TouchScreen" unique_id=1040418047]
+[node name="Jump" type="Button" parent="IsoCamera/TouchScreen" unique_id=1040418047]
 layout_mode = 0
-offset_left = 105.99999
-offset_top = 454.99997
-offset_right = 113.99999
-offset_bottom = 463.74133
+offset_left = 220.0
+offset_top = 486.0
+offset_right = 228.0
+offset_bottom = 494.74136
+scale = Vector2(12.254963, 11.325479)
+action_mode = 0
+script = ExtResource("8_5vw27")
+
+[node name="Power" type="Button" parent="IsoCamera/TouchScreen" unique_id=1528341086]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 362.99997
+offset_right = 103.0
+offset_bottom = 371.74133
 scale = Vector2(12.254963, 11.325479)
 action_mode = 0
 script = ExtResource("8_5vw27")
@@ -68,6 +78,6 @@ action_down = &"backward"
 [connection signal="use_power" from="Player" to="." method="_on_player_use_power"]
 [connection signal="activate" from="Button" to="Gate" method="_on_button_activate"]
 [connection signal="deactivate" from="Button" to="Gate" method="_on_button_deactivate"]
-[connection signal="pressed" from="IsoCamera/TouchScreen/Button" to="Player" method="_on_button_pressed"]
+[connection signal="pressed" from="IsoCamera/TouchScreen/Jump" to="Player" method="_on_button_pressed"]
 
 [editable path="Player"]
