@@ -6,6 +6,7 @@ func _process(_delta: float) -> void:
 
 
 func _pressed() -> void:
-	Input.action_press("ui_accept")
 	# send  signal to act as power being pressed
-	print("easy")
+	Input.action_press("ui_accept")
+	Input.action_release("ui_accept")
+	
