@@ -78,6 +78,5 @@ action_down = &"backward"
 [connection signal="use_power" from="Player" to="." method="_on_player_use_power"]
 [connection signal="activate" from="Button" to="Gate" method="_on_button_activate"]
 [connection signal="deactivate" from="Button" to="Gate" method="_on_button_deactivate"]
-[connection signal="pressed" from="IsoCamera/TouchScreen/Jump" to="Player" method="_on_button_pressed"]
 
 [editable path="Player"]

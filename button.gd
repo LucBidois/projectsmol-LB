@@ -6,7 +6,12 @@ func _process(_delta: float) -> void:
 
 
 func _pressed() -> void:
-	# send  signal to act as power being pressed
-	Input.action_press("power")
-	Input.action_release("power")
+	
+	if self.name == "Jump":
+		Input.action_press("ui_accept")
+		Input.action_release("ui_accept")
+	
+	if self.name == "Power":
+		Input.action_press("power")
+		Input.action_release("power")
 	
